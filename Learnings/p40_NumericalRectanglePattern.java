@@ -9,10 +9,15 @@ public class p40_NumericalRectanglePattern {
 
         for(int i=1; i<=r; i++)
         {
-            for(int j=1; j<=i; j++)
+            for(int j=i; j<=r; j++)
             {
-                System.out.println(j);
+                System.out.print(j + " ");
             }
+            for(int k=1; k<i; k++)
+            {
+                System.out.print(k + " ");
+            }
+            System.out.println();
         }
     }
 }
