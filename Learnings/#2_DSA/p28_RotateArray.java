@@ -1,21 +1,21 @@
-// Rotate an array k times
-public class p0_temp {
-    static int[] rotateArray(int arr[], int k)
+public class p28_RotateArray {
+    static int[] arrayRotation(int arr[], int k)
     {
         int n = arr.length;
         k = k%n;
         int arr2[] = new int[n];
-        int j=0; //pointer for 2nd array
+        int l=0;
         for(int i=n-k; i<n; i++)
         {
-            arr2[j++] = arr[i];
+            arr2[l++] = arr[i];
         }
         for(int i=0; i<n-k; i++)
         {
-            arr2[j++] = arr[i];
+            arr2[l++] = arr[i];
         }
         return arr2;
     }
+
     static void displayArray(int arr[])
     {
         for(int i=0; i<arr.length; i++)
@@ -25,9 +25,11 @@ public class p0_temp {
         System.out.println();
     }
     public static void main(String[] args) {
-        int arr[] = {3,5,0,1,4};
+        int arr[] = {1,2,3,4,5};
+        int k = 102;
         displayArray(arr);
-        int ans[] = rotateArray(arr, 51);
+        int ans[] = arrayRotation(arr, k);
         displayArray(ans);
+
     }
 }
