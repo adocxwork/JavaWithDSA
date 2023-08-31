@@ -32,7 +32,7 @@ public class p35_twoPointerProblem {
         int ans[] = new int[arr.length];
         int left=0, right=arr.length-1;
         int ansArrayIndex=0;
-        while(left<right)
+        while(left<=right)
         {
             if(arr[left]*arr[left] > arr[right]*arr[right])
             {
@@ -47,13 +47,14 @@ public class p35_twoPointerProblem {
             if(left==right)
             {
                 ans[ansArrayIndex++] = arr[left]*arr[left];
+                left++;
             }
         }
         reverseArray(ans);
         return ans;
     }
     public static void main(String[] args) {
-        int arr[] = {-10,-3,-2,1,4,5};
+        int arr[] = {-10,-2,1,20};
         int ans[] = returningSquaresOfElementsInNonDecreasingOrder(arr);
         displayArray(arr);
         displayArray(ans);
