@@ -38,6 +38,8 @@ public class p9_SpiralMatrixTraversal {
         }
         return ans;
     }
+
+
     static int[] spiralMatrixTraversal(int arr[][])
     {
         int row = arr.length, col = arr[0].length, totalElementsTraversed = 0, ansPointer=0;
@@ -76,17 +78,109 @@ public class p9_SpiralMatrixTraversal {
                 ans[ansPointer++] = arr[i][leftCol];
                 totalElementsTraversed++;
             }
-            leftCol--;
+            leftCol++;
         }
         return ans;
     }
+    static int[] spiralMatrixTraversalAntiClockWise(int arr[][])
+    {
+        int row = arr.length, col = arr[0].length, totalElementsTraversed = 0, ansPointer=0;
+        int ans[] = new int[(row*col)];
+        int topRow=0, bottomRow=row-1, leftCol=0, rightCol=col-1;
+
+        while(totalElementsTraversed<(row*col))
+        {
+            // top row
+            for(int j=rightCol; j>=leftCol && totalElementsTraversed<(row*col); j--)
+            {
+                ans[ansPointer++] = arr[topRow][j];
+                totalElementsTraversed++;
+            }
+            topRow++;
+            
+            // left col
+            for(int i=topRow; i<=bottomRow && totalElementsTraversed<(row*col); i++)
+            {
+                ans[ansPointer++] = arr[i][leftCol];
+                totalElementsTraversed++;
+            }
+            leftCol++;
+
+            // bottom row
+            for(int j=leftCol; j<=rightCol && totalElementsTraversed<(row*col); j++)
+            {
+                ans[ansPointer++] = arr[bottomRow][j];
+                totalElementsTraversed++;
+            }
+            bottomRow--;
+
+            // right col
+            for(int i=bottomRow; i>=topRow && totalElementsTraversed<(row*col); i--)
+            {
+                ans[ansPointer++] = arr[i][rightCol];
+                totalElementsTraversed++;
+            }
+            rightCol--;
+        }
+        return ans;
+    }
+    
+    // given a positive integer n, generate an n*n matrix filled
+    // with elements from 1 to n^2 in spiral order.
+    static int[][] spiralMatrixGeneration(int n)
+    {
+        int arr[][] = new int[n][n];
+        int row = arr.length, col = arr[0].length, totalElementsTraversed = 0, ele=1;
+        int topRow=0, bottomRow=row-1, leftCol=0, rightCol=col-1;
+    
+        while(totalElementsTraversed<(row*col))
+        {
+            // top row
+            for(int j=leftCol; j<=rightCol && totalElementsTraversed<(row*col); j++)
+            {
+                arr[topRow][j] = ele++;
+                totalElementsTraversed++;
+            }
+            topRow++;
+            
+            // right col
+            for(int i=topRow; i<=bottomRow && totalElementsTraversed<(row*col); i++)
+            {
+                arr[i][rightCol] = ele++;
+                totalElementsTraversed++;
+            }
+            rightCol--;
+            
+            // bottom row
+            for(int j=rightCol; j>=leftCol && totalElementsTraversed<(row*col); j--)
+            {
+                arr[bottomRow][j] = ele++;
+                totalElementsTraversed++;
+            }
+            bottomRow--;
+            
+            // left col
+            for(int i=bottomRow; i>=topRow && totalElementsTraversed<(row*col); i--)
+            {
+                arr[i][leftCol] = ele++;
+                totalElementsTraversed++;
+            }
+            leftCol++;
+        }
+        return arr;
+    }
+
+
     public static void main(String[] args) {
         int arr[][] = make2DArray();
         System.out.println();
         display2DArray(arr);
 
         System.out.println();
-        int arr2[] = spiralMatrixTraversal(arr);
+        int arr2[] = spiralMatrixTraversalAntiClockWise(arr);
         display1DArray(arr2);
+
+        // int arr[][] = spiralMatrixGeneration(3);
+        // display2DArray(arr);
     }
 }
