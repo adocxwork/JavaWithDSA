@@ -103,7 +103,15 @@ public class p10_rectangleSumPrefixSumIn2DArray {
         int arr2[][] = prefixSumRowAndColWise(arr);
         // calculation
         int sum=0;
+        if(l1>0 && r1>0)
         sum = arr2[l2][r2] - arr2[l1-1][r2] - arr2[l2][r1-1] + arr2[l1-1][r1-1];
+        else if(l1==0 && r1==0)
+        sum = arr2[l2][r2];
+        else if(l1==0)
+        sum = arr2[l2][r2] - arr2[l2][r1-1];
+        else if(r1==0)
+        sum = arr2[l2][r2] - arr2[l1-1][r2];
+
         return sum;
     }
     public static void main(String[] args) {
@@ -117,7 +125,7 @@ public class p10_rectangleSumPrefixSumIn2DArray {
 
         // System.out.println(sumOfRectangleBruteForce(arr, 0,1,1,3));
         // System.out.println(sumOfRectanglePrefixSumMethod(arr, 0,1,1,3));
-        // System.out.println(sumOfRectangleUltimatePrefixSumMethod(arr, 0,1,1,3));
+        System.out.println(sumOfRectangleUltimatePrefixSumMethod(arr, 1,0,2,1));
 
         System.out.println();
         display2DArray(arr);
