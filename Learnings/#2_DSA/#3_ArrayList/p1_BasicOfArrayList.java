@@ -2,7 +2,7 @@ import java.util.ArrayList;
 public class p1_BasicOfArrayList{
     public static void main(String[] args) {
 
-        // Using wrapper class
+        // Creating wrapper class's object
         Integer k = Integer.valueOf(3); //k is an object
         System.out.println(k);
         Float j = Float.valueOf(3.33f);
@@ -53,11 +53,29 @@ public class p1_BasicOfArrayList{
         System.out.println(l1.contains(Integer.valueOf(33))); //false, l1 doesn't has 33
         // Integer.valueOf(3) >> this is an Object
 
-        // if you don't specify class, you can put anything inside l
+        // if you don't specify wrapper class inside <>, you can put anything(of any datatype) inside ArrayList
         ArrayList l = new ArrayList();
         l.add("pqres");
         l.add(1);
         l.add(true);
         System.out.println(l);
+
+        // followup question
+        System.out.println();
+        ArrayList<Integer> l4 = new ArrayList<Integer>();
+        System.out.println(l4.isEmpty()); //true
+        l4.add(7);
+        l4.add(2);
+        l4.add(1);
+        l4.add(2);
+        l4.add(0);
+        // l4.add(Integer.valueOf(7));
+        // l4.add(Integer.valueOf(2));
+        // l4.add(Integer.valueOf(1));
+        // l4.add(Integer.valueOf(2));
+        // l4.add(Integer.valueOf(0));
+        System.out.println(l4); // [7,2,1,2,0]
+        System.out.println(l4.indexOf(2)); // 1
+        System.out.println(l4.lastIndexOf(2)); // 3
     }
 }
