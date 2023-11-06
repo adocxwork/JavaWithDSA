@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class a1 {
     static int noOfDigits(int n)
     {
@@ -35,10 +37,20 @@ public class a1 {
         // System.out.println(armstrongNoCheck(370));
         // System.out.println(armstrongNoCheck(1634));
 
-        System.out.println(recursiveArmstrongNoCalc(1,1));
-        System.out.println(recursiveArmstrongNoCalc(153,3));
-        System.out.println(recursiveArmstrongNoCalc(370,3));
-        System.out.println(recursiveArmstrongNoCalc(1634,4));
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a number :-");
+        int n = sc.nextInt();
+        int nod = noOfDigits(n);
+        int sum = recursiveArmstrongNoCalc(n, nod);
+        if(n==sum)
+        System.out.println("It's an armstrong number.");
+        else
+        System.out.println("It's not...");
+
+        // System.out.println(recursiveArmstrongNoCalc(1,1));
+        // System.out.println(recursiveArmstrongNoCalc(153,3));
+        // System.out.println(recursiveArmstrongNoCalc(370,3));
+        // System.out.println(recursiveArmstrongNoCalc(1634,4));
     }
 }
 // multiplication of x & y
