@@ -1,0 +1,57 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class BankAccount {
+private:
+    string depositor_name;
+    int account_number;
+    string account_type;
+    double balance;
+
+public:
+    // Constructor to initialize data members
+    BankAccount(string name, int acc_number, string acc_type, double initial_balance) {
+        depositor_name = name;
+        account_number = acc_number;
+        account_type = acc_type;
+        balance = initial_balance;
+    }
+
+    // Function to deposit an amount
+    void deposit(double amount) {
+        balance += amount;
+        cout << "Amount " << amount << " deposited successfully." << endl;
+    }
+
+    // Function to withdraw an amount after checking balance
+    void withdraw(double amount) {
+        if (balance >= amount) {
+            balance -= amount;
+            cout << "Amount " << amount << " withdrawn successfully." << endl;
+        } else {
+            cout << "Insufficient balance." << endl;
+        }
+    }
+
+    // Function to display the name and balance
+    void display() {
+        cout << "Name: " << depositor_name << endl;
+        cout << "Balance: $" << balance << endl;
+    }
+};
+
+int main() {
+    // Creating a bank account object
+    BankAccount account("John Doe", 123456, "Savings", 1000.0);
+
+    // Testing deposit and withdraw functions
+    account.deposit(500);
+    account.withdraw(200);
+
+    // Displaying account details
+    account.display();
+
+    return 0;
+}

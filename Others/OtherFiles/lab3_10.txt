@@ -1,0 +1,75 @@
+// This program is written by Aditya Gupta(231B017)
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <string>
+
+using namespace std;
+
+// Define the structure
+struct EnginePart {
+    string serialNumber;
+    int yearOfManufacturing;
+    string materialType;
+    int quantity;
+};
+
+// Function to generate a random number between min and max
+int getRandomNumber(int min, int max) {
+    return rand() % (max - min + 1) + min;
+}
+
+// Function to generate random material type
+string getRandomMaterialType() {
+    string materials[] = {"Steel", "Aluminum", "Iron"};
+    return materials[rand() % 3];
+}
+
+// Function to initialize the structure members
+void initializeStructure(EnginePart& part, int index) {
+    // Generate serial number
+    char serialChar = 'A' + index / 10;
+    int serialNumber = index % 10;
+    part.serialNumber = "A" + to_string(serialChar) + to_string(serialNumber);
+
+    // Generate random year of manufacturing
+    part.yearOfManufacturing = getRandomNumber(1990, 2018);
+
+    // Generate random material type
+    part.materialType = getRandomMaterialType();
+
+    // Generate random quantity
+    part.quantity = getRandomNumber(1, 1000);
+}
+
+// Function to display parts within a given serial number range
+void displayPartsInRange(EnginePart parts[], string startSerial, string endSerial) {
+    for (int i = 0; i < 60; ++i) {
+        if (parts[i].serialNumber >= startSerial && parts[i].serialNumber <= endSerial) {
+            cout << "Serial Number: " << parts[i].serialNumber << ", Year: " << parts[i].yearOfManufacturing
+                 << ", Material: " << parts[i].materialType << ", Quantity: " << parts[i].quantity << endl;
+        }
+    }
+}
+
+int main() {
+    // Seed for random number generation
+    srand(time(0));
+
+    // Declare an array of structures
+    EnginePart parts[60];
+
+    // Initialize the values of structure members
+    for (int i = 0; i < 60; ++i) {
+        initializeStructure(parts[i], i);
+    }
+
+    // Display parts within a given serial number range [BB1, CC6]
+    string startSerial = "BB1";
+    string endSerial = "CC6";
+
+    cout << "Parts within the range [" << startSerial << ", " << endSerial << "]:" << endl;
+    displayPartsInRange(parts, startSerial, endSerial);
+
+    return 0;
+}
