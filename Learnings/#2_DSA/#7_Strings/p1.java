@@ -4,8 +4,11 @@ public class p1{
         Scanner sc = new Scanner(System.in);
         // String str = sc.next();
         // String str = sc.nextLine();
-        String s = "hello";
-        char ss = s.charAt(1);
-        System.out.println(ss);
+        // char ss = s.charAt(1);
+        // String str = "hello", gtr = "Aello";
+        // String str = "Aditya";
+        String s1 = "Aditya ", s2 = "Gupta";
+        String s3 = s1.concat(s2);
+        System.out.println(s3);
     }
 }
