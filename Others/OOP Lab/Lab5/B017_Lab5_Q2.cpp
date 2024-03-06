@@ -1,48 +1,37 @@
 #include <iostream>
 #include <string>
 using namespace std;
-
 class BankAccount {
-private:
     int accountNumber;
     string accountHolderName;
     double balance;
 
 public:
-    // Constructors
     BankAccount() {
         accountNumber = 0;
         accountHolderName = "";
         balance = 0.0;
     }
-
-    BankAccount(int accNum, string accHolderName) {
-        accountNumber = accNum;
-        accountHolderName = accHolderName;
+    BankAccount(int aN, string ahn) {
+        accountNumber = aN;
+        accountHolderName = ahn;
         balance = 0.0;
     }
-
-    BankAccount(int accNum, string accHolderName, double bal) {
-        accountNumber = accNum;
-        accountHolderName = accHolderName;
+    BankAccount(int an, string ahn, double bal) {
+        accountNumber = an;
+        accountHolderName = ahn;
         balance = bal;
     }
-
-    // Member function to deposit money
     void deposit(double amount) {
         balance += amount;
     }
-
-    // Member function to withdraw money
     void withdraw(double amount) {
         if (balance >= amount) {
             balance -= amount;
         } else {
-            cout << "Insufficient funds. Withdrawal not processed." << endl;
+            cout << "Insufficient balance!" << endl;
         }
     }
-
-    // Member function to display account details
     void display() {
         cout << "Account Number: " << accountNumber << endl;
         cout << "Account Holder Name: " << accountHolderName << endl;
@@ -51,28 +40,20 @@ public:
 };
 
 int main() {
-    // Creating objects using all three constructors
-    BankAccount account1;
-    BankAccount account2(123456, "Alice");
-    BankAccount account3(789012, "Bob", 1000.0);
+    BankAccount a1;
+    BankAccount a2(928373, "Adi");
+    BankAccount a3(789012, "Aditya", 1000.0);
 
-    // Performing deposit and withdrawal operations
-    account1.deposit(500);
-    account2.withdraw(200);
-    account3.deposit(300);
-    account3.withdraw(1500);
+    a1.deposit(500);
+    a2.withdraw(200);
+    a3.deposit(300);
+    a3.withdraw(1500);
 
-    // Displaying account details
-    cout << "Account 1 details:" << endl;
-    account1.display();
-    cout << endl;
-
-    cout << "Account 2 details:" << endl;
-    account2.display();
-    cout << endl;
-
-    cout << "Account 3 details:" << endl;
-    account3.display();
-
+    cout << "Account 1 :-" << endl;
+    a1.display();
+    cout << "Account 2 :-" << endl;
+    a2.display();
+    cout << "Account 3 :-" << endl;
+    a3.display();
     return 0;
 }

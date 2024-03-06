@@ -1,37 +1,37 @@
 #include <iostream>
 using namespace std;
-
 class Point {
-private:
     int x, y;
-
 public:
-    // Constructor to initialize Point object with given coordinates
-    Point(int xCoord, int yCoord) : x(xCoord), y(yCoord) {
-        cout << "Point constructor called with coordinates (" << x << ", " << y << ")" << endl;
+    Point(){
+        x = 0;
+        y = 0;
     }
-
-    // Destructor
+    Point(int xCoord, int yCoord) : x(xCoord), y(yCoord) {
+        cout << "Point constructor (" << x << ", " << y << ")" << endl;
+    }
+    void setVal(int xx, int yy){
+        x = xx;
+        y = yy;
+    }
     ~Point() {
-        cout << "Point destructor called for coordinates (" << x << ", " << y << ")" << endl;
+        cout << "Point destructor (" << x << ", " << y << ")" << endl;
     }
 };
 
 class Rectangle {
-private:
-    Point topLeft;      // Top-left vertex of the rectangle
-    Point bottomRight;  // Bottom-right vertex of the rectangle
+    Point topLeft;
+    Point bottomRight;
 
 public:
-    // Parameterized constructor to initialize Rectangle object with given vertices
-    Rectangle(int x1, int y1, int x2, int y2) : topLeft(x1, y1), bottomRight(x2, y2) {
-        cout << "Rectangle constructor called with top-left vertex (" << x1 << ", " << y1 << ")"
-             << " and bottom-right vertex (" << x2 << ", " << y2 << ")" << endl;
+    Rectangle(int x1, int y1, int x2, int y2){
+        topLeft.setVal(x1, y1);
+        bottomRight.setVal(x2, y2);
+        cout << "Rectangle constructor (" << x1 << ", " << y1 << ")"
+             << " and (" << x2 << ", " << y2 << ")" << endl;
     }
-
-    // Destructor
     ~Rectangle() {
-        cout << "Rectangle destructor called" << endl;
+        cout << "Rectangle destructor" << endl;
     }
 };
 
@@ -42,7 +42,7 @@ int main() {
     cout << "\nCreating a Rectangle object..." << endl;
     Rectangle r(1, 2, 5, 6);
 
-    cout << "\nProgram ended. Destructors will be called automatically." << endl;
+    cout << "\nProgram ended." << endl;
 
     return 0;
 }
