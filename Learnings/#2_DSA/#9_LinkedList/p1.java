@@ -15,6 +15,14 @@ public class p1{
         System.out.print(head.data + " ");
         displayLL(head.next);
     }
+    public static int length(Node head){
+        int count=0;
+        while (head!=null) {
+            count++;
+            head = head.next;
+        }
+        return count;
+    }
     public static class Node{
         int data; //value
         Node next; //address of next node
@@ -54,5 +62,6 @@ public class p1{
         // }
         displayLL(ob1);
         displayLLRecusively(ob1);
+        System.out.println(length(ob1));
     }
 }
