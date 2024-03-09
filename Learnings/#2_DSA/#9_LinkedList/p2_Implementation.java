@@ -10,9 +10,9 @@ public class p2_Implementation {
 
     public static class linkedlist {
         Node head = null, tail = null;
-        int size=0;
+        int size = 0;
 
-        void insertAtStart(int data) { //O(1)
+        void insertAtStart(int data) { // O(1)
             Node temp = new Node(data);
             if (head == null) {
                 head = tail = temp;
@@ -23,6 +23,7 @@ public class p2_Implementation {
             }
             size++;
         }
+
         void insertAtEnd(int data) { // O(1) if tail is given
             Node temp = new Node(data);
             if (head == null) {
@@ -33,17 +34,19 @@ public class p2_Implementation {
             tail = temp;
             size++;
         }
-        void insertAtEnd2(int data){ // O(n) if only head is given
+
+        void insertAtEnd2(int data) { // O(n) if only head is given
             Node temp = head;
             Node newNode = new Node(data);
-            while(temp.next!=null){
+            while (temp.next != null) {
                 temp = temp.next;
             }
             temp.next = newNode;
             tail = newNode;
             size++;
         }
-        void insertAt(int idx, int data) { //O(n)
+
+        void insertAt(int idx, int data) { // O(n)
             Node newNode = new Node(data);
             if (idx < 0 || idx > size()) {
                 System.out.println("Invalid index.");
@@ -63,8 +66,9 @@ public class p2_Implementation {
                 temp.next = newNode;
                 size++;
             }
-        }      
-        void insertAt2(int idx, int val) { //O(n)
+        }
+
+        void insertAt2(int idx, int val) { // O(n)
             Node t = new Node(val);
             Node temp = head;
             if (idx == size()) {
@@ -84,42 +88,45 @@ public class p2_Implementation {
             temp.next = t;
             size++;
         }
-        void deleteAt(int idx){
-            if(idx==0){
+
+        void deleteAt(int idx) {
+            if (idx == 0) {
                 head = head.next;
                 size--;
                 return;
-            } else if(idx==size-1){
+            } else if (idx == size - 1) {
                 Node temp = head;
-                for(int i=1; i<=idx-1; i++){
+                for (int i = 1; i <= idx - 1; i++) {
                     temp = temp.next;
                 }
                 temp.next = temp.next.next;
                 tail = temp;
                 size--;
                 return;
-            } else if(idx<0 || idx>=size){
+            } else if (idx < 0 || idx >= size) {
                 System.out.println("Invalid index.");
                 return;
             }
             Node temp = head;
-            for(int i=1; i<=idx-1; i++){
+            for (int i = 1; i <= idx - 1; i++) {
                 temp = temp.next;
             }
             temp.next = temp.next.next;
             size--;
         }
-        int getAt(int idx){ //O(n)
-            if(idx<0 || idx>=size()){
+
+        int getAt(int idx) { // O(n)
+            if (idx < 0 || idx >= size()) {
                 System.out.println("Invaild index.");
                 return -1;
             }
             Node temp = head;
-            for(int i=1; i<=idx; i++){
+            for (int i = 1; i <= idx; i++) {
                 temp = temp.next;
             }
             return temp.data;
         }
+
         void display() {
             Node temp = head;
             while (temp != null) {
@@ -128,17 +135,19 @@ public class p2_Implementation {
             }
             System.out.println();
         }
-        int size() { //O(n)
+
+        int size() { // O(n)
             // Node temp = head;
             // int count = 0;
             // while (temp != null) {
-            //     count++;
-            //     temp = temp.next;
+            // count++;
+            // temp = temp.next;
             // }
             // return count;
-            return size; //O(1)
+            return size; // O(1)
         }
     }
+
     public static void main(String[] args) {
         linkedlist ll = new linkedlist();
         ll.insertAtEnd(9);
