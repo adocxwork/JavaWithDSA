@@ -1,30 +1,23 @@
 #include <iostream>
-
 using namespace std;
 
 class Matrix {
-private:
     int m, n;
     int **matrix;
 
 public:
-    // Constructor to allocate memory dynamically
     Matrix(int rows, int cols) : m(rows), n(cols) {
         matrix = new int*[m];
         for (int i = 0; i < m; ++i) {
             matrix[i] = new int[n];
         }
     }
-
-    // Destructor to deallocate memory
     ~Matrix() {
         for (int i = 0; i < m; ++i) {
             delete[] matrix[i];
         }
         delete[] matrix;
     }
-
-    // Function to set data in the matrix
     void setData() {
         cout << "Enter matrix elements:" << endl;
         for (int i = 0; i < m; ++i) {
@@ -33,8 +26,6 @@ public:
             }
         }
     }
-
-    // Function to print the matrix
     void printData() {
         cout << "Matrix:" << endl;
         for (int i = 0; i < m; ++i) {
@@ -44,8 +35,6 @@ public:
             cout << endl;
         }
     }
-
-    // Overloading + operator for matrix addition
     Matrix operator+(const Matrix& other) {
         Matrix result(m, n);
         for (int i = 0; i < m; ++i) {
@@ -55,8 +44,6 @@ public:
         }
         return result;
     }
-
-    // Overloading * operator for matrix multiplication
     Matrix operator*(const Matrix& other) {
         if (n != other.m) {
             cerr << "Matrix dimensions are incompatible for multiplication." << endl;
@@ -80,26 +67,17 @@ int main() {
     int m, n;
     cout << "Enter dimensions of matrices (m n): ";
     cin >> m >> n;
-
-    // Create two Matrix objects
     Matrix mat1(m, n);
     Matrix mat2(m, n);
-
-    // Input elements for matrices
     cout << "Enter elements for matrix 1:" << endl;
     mat1.setData();
     cout << "Enter elements for matrix 2:" << endl;
     mat2.setData();
-
-    // Matrix addition
-    Matrix additionResult = mat1 + mat2;
+    Matrix addRes = mat1 + mat2;
     cout << "Result of matrix addition:" << endl;
-    additionResult.printData();
-
-    // Matrix multiplication
+    addRes.printData();
     cout << "Result of matrix multiplication:" << endl;
-    Matrix multiplicationResult = mat1 * mat2;
-    multiplicationResult.printData();
-
+    Matrix mulRes = mat1 * mat2;
+    mulRes.printData();
     return 0;
 }
