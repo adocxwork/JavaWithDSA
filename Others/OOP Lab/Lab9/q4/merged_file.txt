@@ -1,3 +1,2 @@
-hello,
-this is file1 and, this
-is file 2
+This is file1,
+and, this is file2.

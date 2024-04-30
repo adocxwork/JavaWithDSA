@@ -12,10 +12,8 @@ struct Employee {
 };
 
 int main() {
-    // Prompt the user to enter name data
     char choice;
     ofstream outFile("employee_data.txt");
-
     if (!outFile) {
         cout << "Error: Unable to create file." << endl;
         return 1;
@@ -33,23 +31,19 @@ int main() {
         cout << "Enter employee number: ";
         cin >> emp.employeeNumber;
 
-        // Write data to the file
         outFile << emp.firstName << " " << emp.middleInitial << " " << emp.lastName << " " << emp.employeeNumber << endl;
 
         cout << "Do you want to enter another employee data? (Y/N): ";
         cin >> choice;
     } while (choice == 'Y' || choice == 'y');
-
     outFile.close();
 
-    // Open the file for reading
     ifstream inFile("employee_data.txt");
     if (!inFile) {
         cout << "Error: Unable to open file." << endl;
         return 1;
     }
 
-    // Read and display all the data in the file
     Employee emp;
     while (inFile >> emp.firstName >> emp.middleInitial >> emp.lastName >> emp.employeeNumber) {
         cout << "First Name: " << emp.firstName << endl;

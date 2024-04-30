@@ -5,14 +5,12 @@
 using namespace std;
 
 int main() {
-    // Open the source file for reading
     ifstream sourceFile("source.txt", ios::binary);
     if (!sourceFile) {
         cout << "Error: Unable to open source file." << endl;
         return 1;
     }
 
-    // Open the destination file for writing
     ofstream destFile("destination.txt", ios::binary);
     if (!destFile) {
         cout << "Error: Unable to create destination file." << endl;
@@ -27,7 +25,6 @@ int main() {
         destFile.write(buffer, bytesRead);
     }
 
-    // Close files
     sourceFile.close();
     destFile.close();
 
