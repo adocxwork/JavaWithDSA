@@ -14,7 +14,7 @@ public class p12_ques_ReorderQueue {
             q.add(q.remove());
         }
 
-        // reverse queue using stack
+        // reverse queue using stack..
         while (!q.isEmpty())
             st.push(q.remove());
         while (!st.isEmpty())
