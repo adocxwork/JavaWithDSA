@@ -33,7 +33,7 @@ public class p3_SetInterFaceExample {
         st.add(48);
         st.add(15);
         st.add(10);
-        System.out.println(st); //order will be the same...
+        System.out.println(st); //order will sorted...
     }
     public static void main(String[] args) {
         // HashSetExample();
