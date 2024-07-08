@@ -37,7 +37,7 @@ public class p3_PreInPost {
         postOrder(root.right);
         System.out.println(root.val);
     }
-    public static void nthLevel(Node root, int n){
+    public static void nthLevel(Node root, int n){ //left to right
         if(root==null) return;
         if(n==1) {
             System.out.print(root.val + " ");
@@ -45,6 +45,15 @@ public class p3_PreInPost {
         }
         nthLevel(root.left, n-1);
         nthLevel(root.right, n-1);
+    }
+    public static void nthLevel2(Node root, int n){ //right to left
+        if(root==null) return;
+        if(n==1) {
+            System.out.print(root.val + " ");
+            return;
+        }
+        nthLevel2(root.right, n-1);
+        nthLevel2(root.left, n-1);
     }
     public static int height(Node root){
         if(root==null || (root.left==null && root.right==null)) return 0;
@@ -82,12 +91,13 @@ public class p3_PreInPost {
         // postOrder(root);
         // nthLevel(root, 3);
 
-        // int level = height(root)+1;
-        // for(int i=1; i<=level; i++){
-        //     nthLevel(root, i);
-        //     System.out.println();
-        // }
+        int level = height(root)+1;
+        for(int i=1; i<=level; i++){
+            if(i%2!=0) nthLevel(root, i);
+            else nthLevel2(root, i);
+            System.out.println();
+        }
 
-        BFS(root);
+        // BFS(root);
     }
 }
