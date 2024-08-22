@@ -2,10 +2,6 @@
 using namespace std;
 
 void decimalToBinary(int decimal) {
-    if (decimal == 0) {
-        cout << "The binary equivalent of decimal 0 is: 0" << endl;
-        return;
-    }
     int binaryNumber = 0;
     int placeValue = 1;
 
