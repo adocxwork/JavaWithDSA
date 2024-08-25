@@ -1,7 +1,13 @@
 n = int(input("Enter number : "))
-nn = n**(1/3)
-if(nn**3==n):
-    print("Cube root :", nn)
-    print("The number is perfect cube.")
-else:
+flag= 0
+for i in range(1, n):
+    if(i*i*i == n):
+        print("Cube root :", i)
+        flag = 1
+        break
+    elif(i*i*i>n):
+        break
+if(flag==0):
     print("The number is not perfect cube.")
+else:
+    print("The number is perfect cube.")
