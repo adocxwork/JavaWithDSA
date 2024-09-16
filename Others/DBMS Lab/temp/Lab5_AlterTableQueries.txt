@@ -1,0 +1,71 @@
+#Creating a table emp
+create table emp (ssn int, fname varchar(20),lname varchar(20),dno int);
+#adding column to the existing table :
+alter table emp add column gender char(1);
+
+#adding column to the table after particular column:
+alter table emp add column email varchar(30) after dno;
+
+#Dropping columns from a table:
+alter table emp drop column email;
+
+#Changing/modifying data type of a column:
+alter table emp modify column gender char(2);
+
+#Adding check constraint for existing table:
+alter table emp add constraint chk1 check (gender in ('mm','ff'));
+
+
+#Adding primary key for existing table:
+alter table emp add constraint emp_pk primary key(ssn);
+
+#Dropping primary key:
+alter table emp drop primary key;
+
+#Adding foreign key in existing table:
+alter table emp add constraint emp_fk foreign key(ssn) references employee(Ssn);
+
+
+#Adding primary key and foreign key while creating a table (Assuming emp table exist): 
+create table dept (dno int primary key, dname char(3), mgr int references emp(ssn));
+
+#Dropping table:
+Drop table dept;
+
+#Renaming table:
+rename table dept to depart;
+
+
+#Creating table with default values:
+create table dept (dno int primary key, dname char(3) default 'CSE', mgr int references emp(ssn) );
+insert into dept (dno, mgr) values (2,123456789);
+select * From dept;
+
+
+#Dropping default values:
+alter table dept alter column dno drop default;
+
+#Query to display Constraint name:
+select COLUMN_NAME, CONSTRAINT_NAME, REFERENCED_COLUMN_NAME, REFERENCED_TABLE_NAME from information_schema.KEY_COLUMN_USAGE where TABLE_NAME = 'employee';
+
+#Updating wrong records(values)
+update emp set fname = 'Nilesh' where ssn = 123;
+
+#Deleting wrong records
+delete from emp where ssn=124;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
