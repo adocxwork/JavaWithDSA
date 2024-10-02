@@ -6,62 +6,50 @@ struct Node {
     Node* next;
 };
 
-class LinkedList {
-private:
-    Node* head;
+void insertEnd(Node** head, int data) {
+    Node* newNode = new Node();
+    newNode->data = data;
+    newNode->next = nullptr;
 
-public:
-    LinkedList() {
-        head = nullptr;
+    if (*head == nullptr) {
+        *head = newNode;
+        return;
     }
 
-    // Method to insert a new node at the beginning
-    void insert(int value) {
-        Node* newNode = new Node();
-        newNode->data = value;
-        newNode->next = head;
-        head = newNode;
+    Node* temp = *head;
+    while (temp->next != nullptr) {
+        temp = temp->next;
     }
+    temp->next = newNode;
+}
 
-    // Method to search for an element in the linked list
-    bool search(int value) {
-        Node* current = head;
-        while (current != nullptr) {
-            if (current->data == value) {
-                return true; // Element found
-            }
-            current = current->next;
+bool searchElement(Node* head, int key) {
+    Node* temp = head;
+    while (temp != nullptr) {
+        if (temp->data == key) {
+            return true;
         }
-        return false; // Element not found
+        temp = temp->next;
     }
-
-    // Destructor to free memory
-    ~LinkedList() {
-        while (head != nullptr) {
-            Node* temp = head;
-            head = head->next;
-            delete temp;
-        }
-    }
-};
+    return false;
+}
 
 int main() {
-    LinkedList list;
-    int value, searchValue;
+    Node* head = nullptr;
+    int choice, value, searchValue;
 
-    // Inserting some values into the linked list
-    list.insert(10);
-    list.insert(20);
-    list.insert(30);
-    list.insert(40);
+    insertEnd(&head, 10);
+    insertEnd(&head, 20);
+    insertEnd(&head, 30);
+    insertEnd(&head, 40);
 
-    cout << "Enter value to search for: ";
+    cout << "Enter the value to search: ";
     cin >> searchValue;
 
-    if (list.search(searchValue)) {
-        cout << "Element " << searchValue << " found in the list." << endl;
+    if (searchElement(head, searchValue)) {
+        cout << "Element " << searchValue << " found in the list.\n";
     } else {
-        cout << "Element " << searchValue << " not found in the list." << endl;
+        cout << "Element " << searchValue << " not found in the list.\n";
     }
 
     return 0;

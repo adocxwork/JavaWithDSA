@@ -6,108 +6,109 @@ struct Node {
     Node* next;
 };
 
-class LinkedList {
-private:
-    Node* head;
+void insertEnd(Node** head, int data) {
+    Node* newNode = new Node();
+    newNode->data = data;
+    newNode->next = nullptr;
 
-public:
-    LinkedList() {
-        head = nullptr;
+    if (*head == nullptr) {
+        *head = newNode;
+        return;
     }
 
-    void insert(int value) {
-        Node* newNode = new Node();
-        newNode->data = value;
-        newNode->next = head;
-        head = newNode;
+    Node* temp = *head;
+    while (temp->next != nullptr) {
+        temp = temp->next;
+    }
+    temp->next = newNode;
+}
+
+void displayList(Node* head) {
+    if (head == nullptr) {
+        cout << "List is empty.\n";
+        return;
     }
 
-    void deleteFromBeginning() {
-        if (head == nullptr) {
-            cout << "List is empty. Nothing to delete." << endl;
-            return;
-        }
-        Node* temp = head;
-        head = head->next;
-        delete temp;
-        cout << "Node deleted from the beginning." << endl;
+    Node* temp = head;
+    while (temp != nullptr) {
+        cout << temp->data << " -> ";
+        temp = temp->next;
+    }
+    cout << "NULL\n";
+}
+
+void deleteFromBeginning(Node** head) {
+    if (*head == nullptr) {
+        cout << "List is empty.\n";
+        return;
+    }
+    Node* temp = *head;
+    *head = (*head)->next;
+    delete temp;
+    cout << "Node deleted from the beginning.\n";
+}
+
+void deleteFromPosition(Node** head, int position) {
+    if (*head == nullptr) {
+        cout << "List is empty.\n";
+        return;
     }
 
-    void deleteFromEnd() {
-        if (head == nullptr) {
-            cout << "List is empty. Nothing to delete." << endl;
-            return;
-        }
-        if (head->next == nullptr) {
-            delete head;
-            head = nullptr;
-            cout << "Node deleted from the end." << endl;
-            return;
-        }
-        Node* temp = head;
-        while (temp->next->next != nullptr) {
-            temp = temp->next;
-        }
-        delete temp->next;
-        temp->next = nullptr;
-        cout << "Node deleted from the end." << endl;
+    if (position == 1) {
+        deleteFromBeginning(head);
+        return;
     }
 
-    void deleteFromPosition(int position) {
-        if (head == nullptr) {
-            cout << "List is empty. Nothing to delete." << endl;
-            return;
-        }
-        if (position == 0) {
-            deleteFromBeginning();
-            return;
-        }
-        Node* temp = head;
-        for (int i = 0; temp != nullptr && i < position - 1; i++) {
-            temp = temp->next;
-        }
-        if (temp == nullptr || temp->next == nullptr) {
-            cout << "Position not found." << endl;
-            return;
-        }
-        Node* nextNode = temp->next->next;
-        delete temp->next;
-        temp->next = nextNode;
-        cout << "Node deleted from position " << position << "." << endl;
+    Node* temp = *head;
+    for (int i = 1; temp != nullptr && i < position - 1; i++) {
+        temp = temp->next;
     }
 
-    void display() {
-        if (head == nullptr) {
-            cout << "List is empty." << endl;
-            return;
-        }
-        Node* temp = head;
-        cout << "Linked List: ";
-        while (temp != nullptr) {
-            cout << temp->data << " -> ";
-            temp = temp->next;
-        }
-        cout << "nullptr" << endl;
+    if (temp == nullptr || temp->next == nullptr) {
+        cout << "Position out of range.\n";
+        return;
     }
 
-    ~LinkedList() {
-        while (head != nullptr) {
-            deleteFromBeginning();
-        }
+    Node* nextNode = temp->next->next;
+    delete temp->next;
+    temp->next = nextNode;
+    cout << "Node deleted from position " << position << ".\n";
+}
+
+void deleteFromEnd(Node** head) {
+    if (*head == nullptr) {
+        cout << "List is empty.\n";
+        return;
     }
-};
+
+    if ((*head)->next == nullptr) {
+        delete *head;
+        *head = nullptr;
+        cout << "Node deleted from the end.\n";
+        return;
+    }
+
+    Node* temp = *head;
+    while (temp->next->next != nullptr) {
+        temp = temp->next;
+    }
+
+    delete temp->next;
+    temp->next = nullptr;
+    cout << "Node deleted from the end.\n";
+}
 
 int main() {
-    LinkedList list;
+    Node* head = nullptr;
     int choice, value, position;
 
-    do {
+    while (true) {
         cout << "\nMenu:\n";
-        cout << "1. Insert node\n";
-        cout << "2. Delete node from beginning\n";
-        cout << "3. Delete node from end\n";
-        cout << "4. Delete node from specified position\n";
-        cout << "5. Display list\n";
+        cout << "1. Insert at end\n";
+        cout << "2. Display list\n";
+        cout << "3. Delete from beginning\n";
+        cout << "4. Delete from position\n";
+        cout << "5. Delete from end\n";
         cout << "6. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
@@ -116,29 +117,34 @@ int main() {
             case 1:
                 cout << "Enter value to insert: ";
                 cin >> value;
-                list.insert(value);
+                insertEnd(&head, value);
                 break;
+
             case 2:
-                list.deleteFromBeginning();
+                displayList(head);
                 break;
+
             case 3:
-                list.deleteFromEnd();
+                deleteFromBeginning(&head);
                 break;
+
             case 4:
-                cout << "Enter position to delete from: ";
+                cout << "Enter position to delete: ";
                 cin >> position;
-                list.deleteFromPosition(position);
+                deleteFromPosition(&head, position);
                 break;
+
             case 5:
-                list.display();
+                deleteFromEnd(&head);
                 break;
+
             case 6:
-                cout << "Exiting..." << endl;
-                break;
+                exit(0);
+
             default:
-                cout << "Invalid choice. Please try again." << endl;
+                cout << "Invalid choice!\n";
         }
-    } while (choice != 6);
+    }
 
     return 0;
 }

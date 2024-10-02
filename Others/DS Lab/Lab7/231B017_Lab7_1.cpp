@@ -36,13 +36,5 @@ int main() {
 
     cout << "Linked List: ";
     display(head);
-
-    Node* current = head;
-    Node* nextNode;
-    while (current != nullptr) {
-        nextNode = current->next;
-        delete current;
-        current = nextNode;
-    }
     return 0;
 }
