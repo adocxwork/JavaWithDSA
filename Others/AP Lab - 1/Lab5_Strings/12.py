@@ -1,9 +1,7 @@
-import random
-
 def word_guessing_game():
     word_to_guess = "apple"
     word_length = len(word_to_guess)
-    guessed_word = ['*' for _ in range(word_length)]
+    guessed_word = ['*' for i in range(word_length)]
     attempts_left = 6
     previous_guesses = []
     print(f"word is {''.join(guessed_word)} its length is {word_length}")
