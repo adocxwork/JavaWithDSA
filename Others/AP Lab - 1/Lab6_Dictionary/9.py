@@ -1,17 +1,18 @@
 from Std_Record import *
-city = {}
-for i in D2.values():
-    if(i in city.keys()):
-        city[i] = city[i] + 1
-    else:
-        city[i] = 1
 
-for i in city.keys():
-    if(city[i]==1):
+state = {}
+for i in D4.values():
+    if(i in state.keys()):
+        state[i] = state[i] + 1
+    else:
+        state[i] = 1
+
+for i in state.keys():
+    if(state[i]==1):
         continue
     print(i.upper())
-    for j in D2.keys():
-        if(i==D2.get(j)):
+    for j in D4.keys():
+        if(i==D4.get(j)):
             print(j)
             print(D1.get(j))
             print(D3.get(j))
