@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>University Webpage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        nav {
+            background-color: #6dd66d;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        nav ul li {
+            position: relative;
+        }
+        nav ul li a {
+            display: block;
+            padding: 10px 20px;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li:hover {
+            background-color: #4CAF50;
+        }
+        .dropdown, .sub-dropdown {
+            display: none;
+            position: absolute;
+            background-color: #6dd66d;
+            min-width: 200px;
+        }
+        .dropdown li, .sub-dropdown li {
+            width: 100%;
+        }
+        .dropdown li a, .sub-dropdown li a {
+            padding: 10px;
+        }
+        nav ul li:hover .dropdown {
+            display: block;
+        }
+        .dropdown li:hover .sub-dropdown {
+            display: block;
+            left: 100%;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">University</a>
+            <ul class="dropdown">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Vision & Mission</a></li>
+                <li><a href="#">Jaypee Group</a></li>
+                <li><a href="#">Message from Chancellor</a></li>
+                <li><a href="#">Administration</a></li>
+                <li><a href="#">Sister Institutions</a>
+                    <ul class="sub-dropdown">
+                        <li><a href="#">JIT Noida</a></li>
+                        <li><a href="#">JUIT Waknaghat</a></li>
+                        <li><a href="#">JU Anoopshahr</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><a href="#">Academics</a>
+            <ul class="dropdown">
+                <li><a href="#">Departments</a></li>
+                <li><a href="#">Programs Offered</a></li>
+                <li><a href="#">Specializations for B.Tech</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Facilities</a>
+            <ul class="dropdown">
+                <li><a href="#">Learning Resource Center</a></li>
+                <li><a href="#">Student Facilities</a>
+                    <ul class="sub-dropdown">
+                        <li><a href="#">Hostel</a></li>
+                        <li><a href="#">Games & Sports</a></li>
+                        <li><a href="#">Gymnasium</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Other Facilities</a>
+                    <ul class="sub-dropdown">
+                        <li><a href="#">IT Infrastructure</a></li>
+                        <li><a href="#">Bank Facilities</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><a href="#">Admission</a></li>
+        <li><a href="#">Contact</a>
+            <ul class="dropdown">
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">How to Reach</a></li>
+                <li><a href="#">Web Designer</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+</body>
+</html>

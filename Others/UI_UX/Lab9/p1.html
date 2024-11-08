@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Responsive Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+        .sidebar {
+            background-color: #444;
+            color: white;
+            padding: 1em;
+            width: 200px;
+            flex-shrink: 0;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin: 1em 0;
+        }
+        .main-content {
+            margin-left: 220px;
+            padding: 2em;
+            flex-grow: 1;
+        }
+
+        .main-content img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 1em;
+            border-radius: 5px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1em;
+            text-align: center;
+            margin-top: auto;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+                display: flex;
+                justify-content: space-around;
+                padding: 0.5em 0;
+            }
+
+            .sidebar a {
+                margin: 0;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Your Name</h1>
+    </header>
+    <nav class="sidebar">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <main class="main-content">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hello! I am a web developer passionate about creating responsive websites.</p>
+            <img src="profile.jpg" alt="Profile Image">
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div>
+                <p>Project 1: Description of the project.</p>
+                <img src="project1.jpg" alt="Project 1 Thumbnail">
+            </div>
+            <div>
+                <p>Project 2: Description of the project.</p>
+                <img src="project2.jpg" alt="Project 2 Thumbnail">
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Email: your.email@example.com</p>
+            <p>Phone: (123) 456-7890</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Your Name</p>
+    </footer>
+
+</body>
+</html>

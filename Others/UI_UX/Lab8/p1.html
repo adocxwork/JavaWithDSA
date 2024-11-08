@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Website with Breadcrumbs and Tabs</title>
+    <style>
+        .breadcrumb {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        .breadcrumb a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        .breadcrumb span {
+            margin: 0 5px;
+            color: #555;
+        }
+        .breadcrumb .current {
+            color: #555;
+            pointer-events: none;
+        }
+        .tabs-container {
+            font-family: Arial, sans-serif;
+            margin-top: 20px;
+        }
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #ddd;
+        }
+        .tabs label {
+            flex: 1;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #f1f1f1;
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 3px solid transparent;
+        }
+        .tabs label:hover {
+            background-color: #e0e0e0;
+        }
+        input[type="radio"] {
+            display: none;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-top: none;
+            background-color: #fff;
+        }		
+        #about:checked ~ .content #About,
+        #services:checked ~ .content #Services,
+        #testimonials:checked ~ .content #Testimonials {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<nav class="breadcrumb">
+    <a href="#">Home</a> <span>&gt;</span>
+    <a href="#">Products</a> <span>&gt;</span>
+    <a href="#">Category</a> <span>&gt;</span>
+    <span class="current">Item</span>
+</nav>
+<div class="tabs-container">
+    <input type="radio" name="tabs" id="about" checked>
+    <input type="radio" name="tabs" id="services">
+    <input type="radio" name="tabs" id="testimonials">
+    <div class="tabs">
+        <label for="about">About</label>
+        <label for="services">Services</label>
+        <label for="testimonials">Testimonials</label>
+    </div>
+    <div class="content">
+        <div id="About" class="tab-content">
+            <h3>About Us</h3>
+            <p>We are dedicated to providing high-quality products to our customers.</p>
+        </div>
+        <div id="Services" class="tab-content">
+            <h3>Our Services</h3>
+            <p>We offer a variety of services to meet your needs, from consultations to full-service solutions.</p>
+        </div>
+        <div id="Testimonials" class="tab-content">
+            <h3>Testimonials</h3>
+            <p>Our customers love our products! Read their feedback and experiences.</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
