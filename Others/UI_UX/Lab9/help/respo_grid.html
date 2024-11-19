@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexible Grid Layout</title>
+  <style>
+    /* Base styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    /* Container for the grid */
+    .grid-container {
+      display: grid;
+      gap: 15px;
+      padding: 20px;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    /* Grid items styling */
+    .grid-item {
+      background-color: #4CAF50;
+      color: white; 
+      padding: 20px;
+      text-align: center;
+      font-size: 1.5em;/* 1.5 times the parents font*/
+      border-radius: 10px;
+    }
+
+    /* Responsive grid layout */
+	/* Large screens (1024px and above) */
+    @media (min-width: 1024px) {
+      .grid-container {
+        grid-template-columns: repeat(4, 1fr); /* 4 columns on large screens */
+      }
+    }
+    /* Laptops (768px to 1023px) */
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .grid-container {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on medium screens */
+      }
+    }
+    /* Tablets (600px to 767px) */
+    @media (min-width: 600px) and (max-width: 767px) {
+      .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on small tablets */
+      }
+    }
+    /* Smartphones (max-width: 599px) */
+    @media (max-width: 599px) {
+      .grid-container {
+        grid-template-columns: 1fr; /* 1 column on smartphones */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+    <div class="grid-item">1</div>
+    <div class="grid-item">2</div>
+    <div class="grid-item">3</div>
+    <div class="grid-item">4</div>
+    <div class="grid-item">5</div>
+    <div class="grid-item">6</div>
+    <div class="grid-item">7</div>
+    <div class="grid-item">8</div>
+  </div>
+</body>
+</html>

@@ -15,6 +15,7 @@
     body {
       font-family: Arial, sans-serif;
       line-height: 1.6;
+      font-size: clamp(14px, 1.5vw, 18px);
     }
 
     /* Header */
@@ -25,28 +26,50 @@
       text-align: center;
     }
 
+    .header .nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
     .header .nav a {
       color: #fff;
-      margin: 0 1rem;
       text-decoration: none;
+      font-size: clamp(12px, 1.2vw, 16px);
     }
 
     .header .nav a:hover {
       text-decoration: underline;
     }
 
-    /* Layout */
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-    }
-
     /* Sidebar */
     .sidebar {
       background-color: #f4f4f4;
-      padding: 1rem;
+      padding: 2rem;
       width: 20%;
       min-width: 200px;
+      display: block; /* Default: visible */
+      height: 100%;
+      position: static; /* Sidebar is static for larger screens */
+    }
+
+    .sidebar.hidden {
+      display: none; /* Hidden for smaller screens */
+    }
+
+    .sidebar.mobile {
+      position: fixed;
+      top: 0;
+      left: -250px; /* Initially hidden */
+      width: 250px;
+      transition: left 0.3s ease;
+      z-index: 1000;
+      height: 100%;
+    }
+
+    .sidebar.mobile.open {
+	  padding: 75px;
+      left: 0; /* Slide into view */
     }
 
     .sidebar a {
@@ -54,10 +77,27 @@
       color: #333;
       text-decoration: none;
       margin: 0.5rem 0;
+      font-size: clamp(14px, 1.5vw, 18px);
     }
 
     .sidebar a:hover {
       color: #007bff;
+    }
+
+    /* Hamburger Icon */
+    .hamburger {
+      display: none; /* Hidden for larger screens */
+      font-size: 1.5rem;
+      cursor: pointer;
+      background-color: #333;
+      color: white;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 5px;
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1100; /* Appear above the sidebar */
     }
 
     /* Main Content */
@@ -86,6 +126,7 @@
 
     .project p {
       text-align: left;
+      font-size: clamp(12px, 1.5vw, 16px);
     }
 
     /* Footer */
@@ -100,24 +141,24 @@
     .footer a {
       color: #007bff;
       text-decoration: none;
+      font-size: clamp(12px, 1.5vw, 16px);
     }
 
     .footer a:hover {
       text-decoration: underline;
     }
-
     /* Responsive Design */
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
+    @media (max-width: 540px) {
+      .hamburger {
+        display: block; /* Show hamburger for smaller screens */
       }
 
       .sidebar {
-        width: 100%;
+        display: none; /* Hide default sidebar for smaller screens */
       }
 
-      .projects-grid {
-        grid-template-columns: 1fr;
+      .sidebar.mobile {
+        display: block; /* Show the mobile sidebar */
       }
     }
   </style>
@@ -125,6 +166,7 @@
 <body>
   <header class="header">
     <h1>Aditya Gupta</h1>
+    <button class="hamburger" id="hamburger">☰</button>
     <nav class="nav">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
@@ -133,7 +175,7 @@
   </header>
 
   <div class="container">
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
@@ -166,5 +208,16 @@
     <p>Contact me at: <a href="mailto:adityagupta@gmail.com">adityagupta@gmail.com</a></p>
     <p>Phone: 9451875374</p>
   </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const sidebar = document.getElementById('sidebar');
+
+    // Toggle Sidebar Open/Close
+    hamburger.addEventListener('click', () => {
+      sidebar.classList.toggle('mobile');
+      sidebar.classList.toggle('open');
+    });
+  </script>
 </body>
 </html>
