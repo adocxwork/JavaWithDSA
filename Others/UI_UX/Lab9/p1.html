@@ -1,124 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio</title>
   <style>
-    /* General Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-    }
-
-    /* Header */
-    .header {
-      background-color: #333;
-      color: #fff;
-      padding: 1rem;
-      text-align: center;
-    }
-
-    .header .nav a {
-      color: #fff;
-      margin: 0 1rem;
-      text-decoration: none;
-    }
-
-    .header .nav a:hover {
-      text-decoration: underline;
-    }
-
-    /* Layout */
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    /* Sidebar */
-    .sidebar {
-      background-color: #f4f4f4;
-      padding: 1rem;
-      width: 20%;
-      min-width: 200px;
-    }
-
-    .sidebar a {
-      display: block;
-      color: #333;
-      text-decoration: none;
-      margin: 0.5rem 0;
-    }
-
-    .sidebar a:hover {
-      color: #007bff;
-    }
-
-    /* Main Content */
-    .main-content {
-      flex: 1;
-      padding: 1rem;
-    }
-
-    .profile-img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 50%;
-      margin: 1rem 0;
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-    }
-
-    .project img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    .project p {
-      text-align: left;
-    }
-
-    /* Footer */
-    .footer {
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 1rem;
-    }
-
-    .footer a {
-      color: #007bff;
-      text-decoration: none;
-    }
-
-    .footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-      }
-
-      .sidebar {
-        width: 100%;
-      }
-
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; }
+    .header { background-color: #333; color: #fff; padding: 1rem; text-align: center; }
+    .header .nav a { color: #fff; margin: 0 1rem; text-decoration: none; font-size: calc(1rem + 0.5vw); }
+    .header .nav a:hover { text-decoration: underline; }
+    .container { display: flex; }
+    .sidebar { background-color: #f4f4f4; padding: 1rem; width: 20%; min-width: 200px; display: flex; flex-direction: column; }
+    .sidebar a { display: block; color: #333; text-decoration: none; margin: 0.5rem 0; font-size: calc(1rem + 0.2vw); }
+    .sidebar a:hover { color: #007bff; }
+    .hamburger { display: none; cursor: pointer; padding: 1rem; background-color: #333; color: #fff; text-align: center; font-size: calc(1rem + 0.5vw); }
+    .sidebar.hidden { display: none; }
+    .main-content { flex: 1; padding: 1rem; }
+    .profile-img { max-width: 10%; height: auto; border-radius: 10%; margin: 1rem 0; }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .project img { max-width: 30%; height: auto; border-radius: 10px; }
+    .project p { text-align: left; }
+    .footer { background-color: #333; color: #fff; text-align: center; padding: 1rem; margin-top: 1rem; font-size: calc(1rem + 0.3vw); }
+    .footer a { color: #007bff; text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+    @media (max-width: 540px) {
+      .sidebar { width: 100%; }
+      .hamburger { display: block; }
+      .sidebar { display: none; }
+      .sidebar.visible { display: block; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .sidebar a { font-size: 1rem; }
     }
   </style>
 </head>
@@ -131,40 +43,43 @@
       <a href="#contact">Contact</a>
     </nav>
   </header>
-
+  <div class="hamburger" onclick="toggleSidebar()">☰ Menu</div>
   <div class="container">
     <aside class="sidebar">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </aside>
-
     <main class="main-content">
       <section id="about">
         <h2>About Me</h2>
-        <img src="3.jpg" alt="Profile Photo" class="profile-img" style="border-radius: 10px; width: 15vw;">
+        <img src="3.png" alt="Profile Photo" class="profile-img">
         <p>Welcome to my portfolio! I am a web developer specializing in responsive design.</p>
       </section>
-
       <section id="projects">
         <h2>My Projects</h2>
         <div class="projects-grid">
           <div class="project">
             <img src="p1.png" alt="Project 1">
-            <p>The Bakery Management System is a software solution designed to streamline and automate the operations of a bakery. It helps manage inventory, track sales, process orders, and handle billing efficiently. The system provides features like real-time stock updates, order management, and customer data storage, enabling bakery owners to optimize their workflow and enhance customer satisfaction. It aims to improve productivity, reduce errors, and ensure smooth day-to-day operations in the bakery.</p>
+            <p>The Bakery Management System streamlines bakery operations by managing inventory, orders, and billing efficiently. It enhances productivity and customer satisfaction.</p>
           </div>
           <div class="project">
-            <img src="p2.jpg" alt="Project 2" style="border-radius: 10px;">
-            <p>The Dating App Project is a platform designed to connect individuals based on shared interests, preferences, and location. It allows users to create profiles, browse potential matches, and engage in private messaging. The app includes features like matchmaking algorithms, profile verification, and privacy controls to enhance user experience and security. Its goal is to provide a safe and enjoyable environment for people to meet and connect, whether for casual dating or long-term relationships.</p>
+            <img src="p2.jpg" alt="Project 2">
+            <p>The Dating App connects individuals via shared interests and preferences, offering a secure and enjoyable matchmaking experience.</p>
           </div>
         </div>
       </section>
     </main>
   </div>
-
   <footer class="footer">
     <p>Contact me at: <a href="mailto:adityagupta@gmail.com">adityagupta@gmail.com</a></p>
     <p>Phone: 9451875374</p>
   </footer>
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.querySelector('.sidebar');
+      sidebar.classList.toggle('visible');
+    }
+  </script>
 </body>
 </html>

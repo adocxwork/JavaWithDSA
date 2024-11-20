@@ -1,95 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Website with Breadcrumbs and Tabs</title>
+    <title>Breadcrumbs</title>
     <style>
-        .breadcrumb {
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            padding: 10px;
-            background-color: #f9f9f9;
-        }
-        .breadcrumb a {
-            color: #007bff;
-            text-decoration: none;
-            margin: 0 5px;
-        }
-        .breadcrumb span {
-            margin: 0 5px;
-            color: #555;
-        }
-        .breadcrumb .current {
-            color: #555;
-            pointer-events: none;
-        }
-        .tabs-container {
-            font-family: Arial, sans-serif;
-            margin-top: 20px;
-        }
-        .tabs {
-            display: flex;
-            border-bottom: 2px solid #ddd;
-        }
-        .tabs label {
-            flex: 1;
-            padding: 10px;
-            cursor: pointer;
-            background-color: #f1f1f1;
-            font-weight: bold;
-            text-align: center;
-            border-bottom: 3px solid transparent;
-        }
-        .tabs label:hover {
-            background-color: #e0e0e0;
-        }
-        input[type="radio"] {
-            display: none;
-        }
-        .tab-content {
-            display: none;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-top: none;
-            background-color: #fff;
-        }		
-        #about:checked ~ .content #About,
-        #services:checked ~ .content #Services,
-        #testimonials:checked ~ .content #Testimonials {
-            display: block;
-        }
+        .breadcrumbs { font-size: 16px; margin: 10px 0; }
+        .breadcrumbs a { text-decoration: none; color: #007BFF; }
+        .breadcrumbs a:hover { text-decoration: underline; }
+        .breadcrumbs span { margin: 0 5px; }
+        .breadcrumbs .current { color: #555; pointer-events: none; cursor: default; }
+        .tabs { margin: 20px 0; }
+        .tabs .tab-buttons { display: flex; border-bottom: 2px solid #ccc; }
+        .tabs .tab-buttons a { background-color: #f9f9f9; text-decoration: none; padding: 10px 20px; cursor: pointer; font-size: 16px; color: #000; border-bottom: 3px solid transparent; display: block; }
+        .tabs .tab-buttons a:hover { background-color: #eaeaea; }
+        .tabs .tab-buttons a.active { border-bottom: 3px solid #007BFF; font-weight: bold; }
+        .tabs .tab-content { display: none; padding: 20px; border: 1px solid #ccc; margin-top: -1px; }
+        .tabs .tab-content:target { display: block; }
+        .tabs .tab-buttons a[href="#about"]:target, .tabs .tab-buttons a[href="#services"]:target, .tabs .tab-buttons a[href="#testimonials"]:target { border-bottom: 3px solid #007BFF; font-weight: bold; }
+        .dropdown { position: relative; display: inline-block; margin: 10px 0; }
+        .dropdown button { background-color: #007BFF; color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; }
+        .dropdown-content { display: none; position: absolute; background-color: #f9f9f9; box-shadow: 0px 8px 16px rgba(0,0,0,0.2); padding: 10px; z-index: 1; }
+        .dropdown-content a { display: block; text-decoration: none; color: #007BFF; padding: 5px 0; }
+        .dropdown-content a:hover { background-color: #eaeaea; }
+        .dropdown:hover .dropdown-content { display: block; }
     </style>
 </head>
 <body>
-<nav class="breadcrumb">
-    <a href="#">Home</a> <span>&gt;</span>
-    <a href="#">Products</a> <span>&gt;</span>
-    <a href="#">Category</a> <span>&gt;</span>
-    <span class="current">Item</span>
-</nav>
-<div class="tabs-container">
-    <input type="radio" name="tabs" id="about" checked>
-    <input type="radio" name="tabs" id="services">
-    <input type="radio" name="tabs" id="testimonials">
+    <div class="breadcrumbs">
+        <a href="#">Home</a>
+        <span>&gt;</span>
+        <a href="#">Products</a>
+        <span>&gt;</span>
+        <a href="#">Category</a>
+        <span>&gt;</span>
+        <span class="current">Item</span>
+    </div>
     <div class="tabs">
-        <label for="about">About</label>
-        <label for="services">Services</label>
-        <label for="testimonials">Testimonials</label>
-    </div>
-    <div class="content">
-        <div id="About" class="tab-content">
-            <h3>About Us</h3>
-            <p>We are dedicated to providing high-quality products to our customers.</p>
+        <div class="tab-buttons">
+            <a href="#about" class="active">About</a>
+            <a href="#services">Services</a>
+            <a href="#testimonials">Testimonials</a>
         </div>
-        <div id="Services" class="tab-content">
-            <h3>Our Services</h3>
-            <p>We offer a variety of services to meet your needs, from consultations to full-service solutions.</p>
+        <div id="about" class="tab-content">
+            <p>This is the About section content.</p>
         </div>
-        <div id="Testimonials" class="tab-content">
-            <h3>Testimonials</h3>
-            <p>Our customers love our products! Read their feedback and experiences.</p>
+        <div id="services" class="tab-content">
+            <p>This is the Services section content.</p>
+        </div>
+        <div id="testimonials" class="tab-content">
+            <p>This is the Testimonials section content.</p>
         </div>
     </div>
-</div>
-
+    <div class="dropdown">
+        <button>Menu</button>
+        <div class="dropdown-content">
+            <a href="#">Option 1</a>
+            <a href="#">Option 2</a>
+            <a href="#">Option 3</a>
+        </div>
+    </div>
 </body>
 </html>
