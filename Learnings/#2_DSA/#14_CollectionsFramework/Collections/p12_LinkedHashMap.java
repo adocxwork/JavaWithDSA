@@ -1,7 +1,7 @@
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class p9_LinkedHashMap {
+public class p12_LinkedHashMap {
     public static void main(String[] args) {
         Map<String, Integer> linkedHashMap = new LinkedHashMap<>();
 

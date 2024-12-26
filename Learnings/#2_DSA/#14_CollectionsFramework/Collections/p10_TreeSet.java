@@ -1,6 +1,6 @@
 import java.util.TreeSet;
 
-public class p7_TreeSet {
+public class p10_TreeSet {
     public static void main(String[] args) {
         TreeSet<Integer> treeSet = new TreeSet<>();
 

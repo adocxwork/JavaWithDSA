@@ -1,6 +1,6 @@
 import java.util.Stack;
 
-public class p2_Stack {
+public class p3_Stack {
     public static void main(String[] args) {
         // Creating a stack
         Stack<Integer> stack = new Stack<>();

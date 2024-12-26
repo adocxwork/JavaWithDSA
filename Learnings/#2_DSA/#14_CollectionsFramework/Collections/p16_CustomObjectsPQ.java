@@ -20,7 +20,7 @@ class Task implements Comparable<Task> {
     }
 }
 
-public class p13_CustomObjectsPQ {
+public class p16_CustomObjectsPQ {
     public static void main(String[] args) {
         PriorityQueue<Task> taskQueue = new PriorityQueue<>();
 

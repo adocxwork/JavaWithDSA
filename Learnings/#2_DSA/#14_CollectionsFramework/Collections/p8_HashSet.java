@@ -1,7 +1,7 @@
 import java.util.HashSet;
 import java.util.Set;
 
-public class p5_HashSet {
+public class p8_HashSet {
     public static void main(String[] args) {
         Set<Integer> hashSet = new HashSet<>();
 

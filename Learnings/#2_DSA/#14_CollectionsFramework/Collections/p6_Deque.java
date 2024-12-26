@@ -1,7 +1,7 @@
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class p4_Deque {
+public class p6_Deque {
     public static void main(String[] args) {
         Deque<String> deque = new LinkedList<>();
 

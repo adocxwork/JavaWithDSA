@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class p8_HashMap {
+public class p11_HashMap {
     public static void main(String[] args) {
         Map<String, Integer> hashMap = new HashMap<>();
 

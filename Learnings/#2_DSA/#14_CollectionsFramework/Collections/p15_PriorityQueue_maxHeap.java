@@ -2,7 +2,7 @@
 import java.util.Collections;
 import java.util.PriorityQueue;
 
-public class p12_PriorityQueue_maxHeap {
+public class p15_PriorityQueue_maxHeap {
     public static void main(String[] args) {
         PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
 

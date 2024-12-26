@@ -1,6 +1,6 @@
 import java.util.TreeMap;
 
-public class p10_TreeMap {
+public class p13_TreeMap {
     public static void main(String[] args) {
         TreeMap<String, Integer> treeMap = new TreeMap<>();
 
