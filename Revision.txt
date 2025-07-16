@@ -1,0 +1,457 @@
+## 1. **Basic Data Types**
+
+int a = 5;
+long b = 10000000000L;
+double pi = 3.14;
+char ch = 'A';
+boolean flag = true;
+
+### Constants
+
+int max = Integer.MAX_VALUE;       // 2147483647
+int min = Integer.MIN_VALUE;       // -2147483648
+long maxL = Long.MAX_VALUE;
+
+
+## 2. **Input and Output**
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        String name = sc.next();
+        sc.close();
+
+        System.out.println("Number: " + n + ", Name: " + name);
+    }
+}
+
+
+## 3. **Control Flow**
+
+### If-Else
+
+if (x > 0) {
+    System.out.println("Positive");
+} else {
+    System.out.println("Non-positive");
+}
+
+### Loops
+
+// For loop
+for (int i = 0; i < n; i++) {
+    System.out.println(i);
+}
+
+// While loop
+int i = 0;
+while (i < n) {
+    System.out.println(i);
+    i++;
+}
+
+
+## 4. **Math Utilities**
+
+Math.min(a, b);
+Math.max(a, b);
+Math.abs(a);
+Math.sqrt(a);
+Math.pow(a, b);
+
+
+## 5. **Type Conversions**
+
+Arrays.toString(arr);                            // Array → String
+new ArrayList<>(Arrays.asList(array));           // Array → ArrayList
+list.toArray(new Integer[0]);                    // ArrayList → Array
+String.valueOf(i);                               // int → String
+s.toCharArray();                                 // String → char[]
+
+
+## 6. **String Handling**
+
+String s = "hello";
+int len = s.length();
+char c = s.charAt(1);                            // 'e'
+String sub = s.substring(1, 4);                  // "ell"
+String res = s + " world";                       // Concatenation
+
+### Comparison
+
+if (s.equals("hello")) { ... }
+
+
+## 7. **StringBuilder**
+
+StringBuilder sb = new StringBuilder();
+sb.append("abc").append("123");                  // "abc123"
+sb.reverse();                                    // "321cba"
+sb.setCharAt(0, 'X');                            // "X21cba"
+
+
+## 8. **Character Operations**
+
+Character.isDigit(c);
+Character.isLetter(c);
+Character.toUpperCase(c);
+Character.toLowerCase(c);
+
+char c = '3';
+int num = c - '0';                               // '3' → 3
+char digit = (char)(3 + '0');                    // 3 → '3'
+
+
+## 9. **Arrays**
+
+int[] arr = new int[5];                          // Default 0s
+int[] arr2 = {1, 2, 3, 4, 5};
+Arrays.fill(arr, -1);
+Arrays.sort(arr);
+
+### Reverse Sort
+
+Integer[] arr = {4, 2, 7, 1};
+Arrays.sort(arr, Collections.reverseOrder());
+
+### Copy/Clone
+
+int[] b = a.clone();
+int[] c = Arrays.copyOf(a, a.length);
+
+
+## 10. **ArrayList**
+
+ArrayList<Integer> list = new ArrayList<>();
+list.add(10);
+list.add(1, 15); // insert at index
+list.remove(1); // remove at index
+list.get(0);
+list.size();
+
+
+## 11. **Stack / Queue / Deque**
+
+### Stack
+
+Stack<Integer> stack = new Stack<>();
+stack.push(1);
+stack.pop();
+stack.peek();
+
+### Queue
+
+Queue<Integer> queue = new LinkedList<>();
+queue.add(10);
+queue.poll();
+queue.peek();
+
+### Deque
+
+Deque<Integer> deque = new ArrayDeque<>();
+deque.addFirst(2);
+deque.addLast(1);
+deque.removeFirst();
+deque.removeLast();
+
+
+## 12. **PriorityQueue (Heap)**
+
+### Min-Heap
+
+PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+minHeap.add(5);
+minHeap.add(1);
+minHeap.poll(); // 1
+
+### Max-Heap
+
+PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+maxHeap.add(5);
+maxHeap.add(1);
+maxHeap.poll(); // 5
+
+
+## 13. **HashMap**
+
+HashMap<String, Integer> map = new HashMap<>();
+map.put("apple", 2);
+map.put("apple", map.get("apple") + 1);
+map.getOrDefault("banana", 0);
+map.remove("banana");
+map.containsKey("banana");
+
+### Looping
+
+for (Map.Entry<String, Integer> entry : map.entrySet()) {
+    System.out.println(entry.getKey() + " -> " + entry.getValue());
+}
+
+### Frequency Count
+
+Map<Character, Integer> freq = new HashMap<>();
+for (char c : s.toCharArray()) {
+    freq.put(c, freq.getOrDefault(c, 0) + 1);
+}
+
+
+## 14. **HashSet / TreeSet / TreeMap**
+
+### HashSet
+
+HashSet<Integer> set = new HashSet<>();
+set.add(1);
+set.contains(1);
+
+### TreeMap
+
+TreeMap<Integer, String> tm = new TreeMap<>();
+tm.firstKey();
+tm.lastKey();
+
+### TreeSet
+
+TreeSet<Integer> ts = new TreeSet<>();
+ts.ceiling(2);
+ts.floor(4);
+
+
+## 15. **Sorting**
+
+### 2D Array
+
+int[][] intervals = {{5,10}, {2,6}, {1,4}};
+Arrays.sort(intervals, (a, b) -> a[0] - b[0]); // by start
+Arrays.sort(intervals, (a, b) -> b[1] - a[1]); // by end descending
+
+### List of Strings by Length
+
+Collections.sort(list, (a, b) -> a.length() - b.length());
+
+### Custom Object
+
+class Interval {
+    int start, end;
+    Interval(int s, int e) { this.start = s; this.end = e; }
+}
+Collections.sort(list, (a, b) -> a.start - b.start);
+
+### Using Comparable
+
+class Job implements Comparable<Job> {
+    int deadline, profit;
+    public int compareTo(Job other) {
+        return this.profit - other.profit;
+    }
+}
+Arrays.sort(jobs);
+
+### Using Comparator
+
+Collections.sort(jobs, (a, b) -> {
+    if (a.deadline == b.deadline) return b.profit - a.profit;
+    return a.deadline - b.deadline;
+});
+
+// Sorting Example
+class Student implements Comparable<Student> {
+    int marks;
+
+    Student(int marks) {
+        this.marks = marks;
+    }
+
+    @Override
+    public int compareTo(Student other) {
+        return this.marks - other.marks; // ascending
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student[] students1 = {
+            new Student(90),
+            new Student(75),
+            new Student(85)
+        };
+
+        Student[] students2 = {
+            new Student(90),
+            new Student(75),
+            new Student(85)
+        };
+
+        // 1. Sort using Comparable (natural order)
+        Arrays.sort(students1);
+
+        // 2. Sort using Comparator (custom order - descending) with lambda
+        Arrays.sort(students2, (a, b) -> b.marks - a.marks);
+    }
+}
+
+
+
+## 16. **Backtracking**
+
+void backtrack(List<Integer> temp, int[] nums, boolean[] used) {
+    if (temp.size() == nums.length) {
+        result.add(new ArrayList<>(temp));
+        return;
+    }
+    for (int i = 0; i < nums.length; i++) {
+        if (used[i]) continue;
+        used[i] = true;
+        temp.add(nums[i]);
+        backtrack(temp, nums, used);
+        temp.remove(temp.size() - 1);
+        used[i] = false;
+    }
+}
+
+
+## 17. **DFS & BFS**
+
+### DFS
+
+void dfs(int[][] grid, boolean[][] visited, int i, int j) {
+    if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length) return;
+    if (visited[i][j] || grid[i][j] == 0) return;
+
+    visited[i][j] = true;
+    dfs(grid, visited, i+1, j);
+    dfs(grid, visited, i-1, j);
+    dfs(grid, visited, i, j+1);
+    dfs(grid, visited, i, j-1);
+}
+
+### BFS
+
+void bfs(int[][] grid, int startX, int startY) {
+    int m = grid.length, n = grid[0].length;
+    Queue<int[]> queue = new LinkedList<>();
+    boolean[][] visited = new boolean[m][n];
+    queue.offer(new int[]{startX, startY});
+    visited[startX][startY] = true;
+
+    int[][] dirs = {{0,1}, {1,0}, {0,-1}, {-1,0}};
+    while (!queue.isEmpty()) {
+        int[] curr = queue.poll();
+        int x = curr[0], y = curr[1];
+        for (int[] dir : dirs) {
+            int nx = x + dir[0], ny = y + dir[1];
+            if (nx >= 0 && ny >= 0 && nx < m && ny < n &&
+                !visited[nx][ny] && grid[nx][ny] == 1) {
+                queue.offer(new int[]{nx, ny});
+                visited[nx][ny] = true;
+            }
+        }
+    }
+}
+
+
+## 18. **Sliding Window**
+
+int maxSumSubarray(int[] nums, int k) {
+    int sum = 0, maxSum = 0;
+    for (int i = 0; i < k; i++) sum += nums[i];
+    maxSum = sum;
+    for (int i = k; i < nums.length; i++) {
+        sum += nums[i] - nums[i - k];
+        maxSum = Math.max(maxSum, sum);
+    }
+    return maxSum;
+}`
+
+
+## 19. **Two Pointers**
+
+boolean isPalindrome(String s) {
+    int left = 0, right = s.length() - 1;
+    while (left < right) {
+        if (s.charAt(left) != s.charAt(right)) return false;
+        left++;
+        right--;
+    }
+    return true;
+}
+
+
+## 20. **Union-Find (Disjoint Set)**
+
+int[] parent;
+
+void initUF(int n) {
+    parent = new int[n];
+    for (int i = 0; i < n; i++) parent[i] = i;
+}
+
+int find(int x) {
+    if (parent[x] != x) parent[x] = find(parent[x]);
+    return parent[x];
+}
+
+void union(int x, int y) {
+    parent[find(x)] = find(y);
+}
+
+
+## 21. **Trie**
+
+class TrieNode {
+    Map<Character, TrieNode> children = new HashMap<>();
+    boolean isEnd = false;
+}
+
+class Trie {
+    TrieNode root = new TrieNode();
+
+    void insert(String word) {
+        TrieNode node = root;
+        for (char c : word.toCharArray()) {
+            node = node.children.computeIfAbsent(c, k -> new TrieNode());
+        }
+        node.isEnd = true;
+    }
+
+    boolean search(String word) {
+        TrieNode node = root;
+        for (char c : word.toCharArray()) {
+            node = node.children.get(c);
+            if (node == null) return false;
+        }
+        return node.isEnd;
+    }
+}
+
+
+## 22. **Prefix Sum**
+
+int[] prefix = new int[nums.length + 1];
+for (int i = 0; i < nums.length; i++) {
+    prefix[i + 1] = prefix[i] + nums[i];
+}
+
+
+## 23. **Bitmasking**
+
+int mask = 0;
+mask |= (1 << i);    // Set i-th bit
+mask &= ~(1 << i);   // Unset i-th bit
+mask ^= (1 << i);    // Toggle i-th bit
+boolean isSet = (mask & (1 << i)) != 0;
+
+
+## 24. **Binary Search**
+int binarySearch(int[] nums, int target) {
+    int left = 0, right = nums.length - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (nums[mid] == target) return mid;
+        else if (nums[mid] < target) left = mid + 1;
+        else right = mid - 1;
+    }
+    return -1;
+}
